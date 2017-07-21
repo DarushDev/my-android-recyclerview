@@ -11,7 +11,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    private List<Animal> persons;
+    private List<Animal> animals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,23 +19,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = (RecyclerView) findViewById(R.id.rv);
-        recyclerView.hasFixedSize();
+        //recyclerView.hasFixedSize();
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
 
         initializeData();
 
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(animals);
+        recyclerView.setAdapter(adapter);
+
     }
 
     // This method creates an ArrayList that has three Animal objects
     private void initializeData() {
-        persons = new ArrayList<>();
-        persons.add(new Animal("PEREGRINE FALCON", "200 mph", R.drawable.falcon));
-        persons.add(new Animal("FRIGATE BIRD", "95 mph", R.drawable.frigate));
-        persons.add(new Animal("SAIL FISH", "68 mph", R.drawable.sailfish));
-        persons.add(new Animal("CHEETAH", "61 mph", R.drawable.cheetah));
-        persons.add(new Animal("PRONGHORN ANTELOPE", "60 mph", R.drawable.antelope));
+        animals = new ArrayList<>();
+        animals.add(new Animal("Peregrine Falcon", "200 mph", R.drawable.falcon));
+        animals.add(new Animal("Frigate Bird", "95 mph", R.drawable.frigate));
+        animals.add(new Animal("Sail Fish", "68 mph", R.drawable.sailfish));
+        animals.add(new Animal("Cheetah", "61 mph", R.drawable.cheetah));
+        animals.add(new Animal("Pronghorn Antelope", "60 mph", R.drawable.antelope));
     }
 
 }
